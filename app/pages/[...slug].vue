@@ -16,7 +16,7 @@
                 <span>.digital</span>
             </h1>
 
-            <h2 class="mt-2 text-foreground/50">Coming Soon..</h2>
+            <h2 class="mt-2 text-foreground/50">Coming Soon...</h2>
         </div>
     </div>
 </template>
