@@ -11,6 +11,10 @@ export default defineNuxtConfig({
         plugins: [tailwindcss()]
     },
 
+    nitro: {
+        preset: 'cloudflare-pages'
+    },
+
     css: ['./app/assets/css/tailwind.css'],
 
     shadcn: {
