@@ -33,7 +33,7 @@ export default defineNuxtConfig({
             bodyAttrs: {
                 class: 'dark'
             },
-            title: 'LXST.template',
+            title: 'LXST.digital | Freelance Web Development',
             meta: [
                 { charset: 'utf-8' },
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -41,7 +41,7 @@ export default defineNuxtConfig({
                     key: 'description',
                     name: 'description',
                     content:
-                        'A premium, high-performance website template built with Nuxt 4, Tailwind 4, and shadcn-vue.'
+                        'Professional freelance web development services. Specializing in building high-performance websites and web applications.'
                 },
                 { name: 'theme-color', content: '#00FF99' }
             ],

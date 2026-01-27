@@ -1,8 +1,8 @@
-# AI Architectural Guidance for LXST.template
+# AI Architectural Guidance for LXST.digital
 
 ## Project Overview
 
-LXST.template is a high-performance, SEO-friendly website template built with Nuxt 4, Tailwind CSS 4, and shadcn-vue. It aims to provide a premium feel with clean, reusable code.
+LXST.digital is a high-performance, SEO-friendly website template built with Nuxt 4, Tailwind CSS 4, and shadcn-vue. It aims to provide a premium feel with clean, reusable code.
 
 ## Key Architectures
 
