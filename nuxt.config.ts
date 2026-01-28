@@ -17,6 +17,13 @@ export default defineNuxtConfig({
 
     css: ['./app/assets/css/tailwind.css'],
 
+    fonts: {
+        // This tells Nuxt to inject <link rel="preload"> for these families
+        defaults: {
+            preload: true
+        }
+    },
+
     shadcn: {
         /**
          * Prefix for all the imported component
@@ -37,7 +44,7 @@ export default defineNuxtConfig({
             bodyAttrs: {
                 class: 'dark'
             },
-            title: 'LXST.digital | Freelance Web Development',
+            title: 'LXST.digital | Digital Product Agency',
             meta: [
                 { charset: 'utf-8' },
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -45,9 +52,32 @@ export default defineNuxtConfig({
                     key: 'description',
                     name: 'description',
                     content:
-                        'Professional freelance web development services. Specializing in building high-performance websites and web applications.'
+                        'LXST.digital is a premier digital product agency. We craft high-performance websites, web applications, and digital strategies for ambitious brands.'
                 },
-                { name: 'theme-color', content: '#00FF99' }
+
+                { name: 'theme-color', content: '#00FF99' },
+
+                // Open Graph / Facebook
+                { property: 'og:type', content: 'website' },
+                { property: 'og:url', content: 'https://lxst.digital/' },
+                { property: 'og:title', content: 'LXST.digital | Digital Product Agency' },
+                {
+                    property: 'og:description',
+                    content:
+                        'Crafting high-performance websites, web applications, and digital strategies for ambitious brands.'
+                },
+                // { property: 'og:image', content: '' },
+
+                // Twitter
+                { property: 'twitter:card', content: 'summary_large_image' },
+                { property: 'twitter:url', content: 'https://lxst.digital/' },
+                { property: 'twitter:title', content: 'LXST.digital | Digital Product Agency' },
+                {
+                    property: 'twitter:description',
+                    content:
+                        'Crafting high-performance websites, web applications, and digital strategies for ambitious brands.'
+                }
+                // { property: 'twitter:image', content: '' },
             ],
             link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
         }
