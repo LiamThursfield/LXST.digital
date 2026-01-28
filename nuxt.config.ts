@@ -66,7 +66,7 @@ export default defineNuxtConfig({
                     content:
                         'Crafting high-performance websites, web applications, and digital strategies for ambitious brands.'
                 },
-                // { property: 'og:image', content: '' },
+                { property: 'og:image', content: '/meta/og_image_default.png' },
 
                 // Twitter
                 { property: 'twitter:card', content: 'summary_large_image' },
@@ -76,8 +76,8 @@ export default defineNuxtConfig({
                     property: 'twitter:description',
                     content:
                         'Crafting high-performance websites, web applications, and digital strategies for ambitious brands.'
-                }
-                // { property: 'twitter:image', content: '' },
+                },
+                { property: 'twitter:image', content: '/meta/og_image_default.png' }
             ],
             link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
         }
