@@ -10,9 +10,7 @@ defineProps<{
 </script>
 
 <template>
-    <section
-        class="container mx-auto overflow-hidden px-gutter py-16 relative lg:py-36"
-    >
+    <section class="container mx-auto overflow-hidden px-gutter py-16 relative lg:py-36">
         <div class="absolute overflow-hidden inset-0">
             <div
                 class="absolute w-full h-full bg-[radial-gradient(closest-side,var(--color-primary),transparent)] opacity-25 transform-gpu"
@@ -33,7 +31,9 @@ defineProps<{
                 lead their industry.
             </p>
 
-            <div class="flex flex-col mt-12 mx-auto space-y-4 w-full lg:inline-flex lg:flex-row lg:space-x-4 lg:w-auto">
+            <div
+                class="flex flex-col mt-12 mx-auto space-y-4 w-full lg:inline-flex lg:flex-row lg:space-x-4 lg:w-auto"
+            >
                 <Button
                     as-child
                     class="inline-flex transition-colors duration-300 ease-linear rounded-full"
