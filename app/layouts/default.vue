@@ -39,6 +39,14 @@ let primaryCta = {
     label: 'Get Started',
     href: '/get-started'
 };
+
+onMounted(() => {
+    // Adding an empty listener to the body enables :active styles in iOS Safari
+    document.body.addEventListener('touchstart', () => {}, { passive: true });
+});
+onBeforeUnmount(() => {
+    document.body.removeEventListener('touchstart', () => {});
+});
 </script>
 
 <template>

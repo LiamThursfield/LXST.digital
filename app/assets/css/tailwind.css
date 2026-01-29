@@ -2,8 +2,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@custom-variant touch (@media (pointer: coarse));
-
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
@@ -179,7 +177,6 @@
 @layer base {
     * {
         @apply border-border outline-ring/50;
-        -webkit-tap-highlight-color: transparent;
     }
     body {
         @apply bg-background text-foreground;
@@ -189,10 +186,6 @@
     button,
     [button] {
         @apply cursor-pointer select-none;
-
-        @media (pointer: coarse) {
-            transition-property: none !important;
-        }
     }
 
     a:disabled,
