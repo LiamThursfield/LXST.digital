@@ -1,4 +1,4 @@
-export type HeaderMenuLink = {
+export type LinkWithLabel = {
     label: string;
     href: string;
 };

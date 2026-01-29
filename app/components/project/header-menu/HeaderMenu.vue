@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import TextLogo from '~/components/project/logos/TextLogo.vue';
 import HamburgerButton from '~/components/lxst/buttons/HamburgerButton.vue';
-import type { HeaderMenuLink } from '~/components/project/types';
+import type { LinkWithLabel } from '~/components/project/types';
 
 defineProps<{
-    links: Array<HeaderMenuLink>;
-    cta?: HeaderMenuLink;
+    links: Array<LinkWithLabel>;
+    cta?: LinkWithLabel;
 }>();
 
 let isMobileMenuOpen = ref(false);
