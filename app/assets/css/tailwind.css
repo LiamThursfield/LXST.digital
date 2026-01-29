@@ -2,6 +2,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@custom-variant touch (@media (pointer: coarse));
+
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
@@ -187,6 +189,10 @@
     button,
     [button] {
         @apply cursor-pointer select-none;
+
+        @media (pointer: coarse) {
+            transition-property: none !important;
+        }
     }
 
     a:disabled,

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const props = defineProps<{
     isActive?: boolean;
 }>();
@@ -12,24 +12,26 @@ const handleClick = () => {
 </script>
 
 <template>
-    <button
-        type="button"
-        class="hamburger-button flex flex-col group justify-between w-6 h-4"
-        :class="{
-            active: props.isActive
-        }"
-        aria-label="Menu"
-        @click="handleClick"
-    >
-        <span
-            v-for="i in 3"
-            :key="i"
-            class="block h-[2px] bg-foreground rounded w-full group-active:bg-primary group-hover:bg-primary transition-all ease-in-out duration-300 origin-center"
-        />
-    </button>
+    <div>
+        <button
+            class="hamburger-button flex flex-col justify-between w-6 h-4"
+            :class="{
+                active: props.isActive
+            }"
+            aria-label="Menu"
+            type="button"
+            @click="handleClick"
+        >
+            <span
+                v-for="i in 3"
+                :key="i"
+                class="block h-[2px] bg-foreground rounded w-full group-active:bg-primary group-hover:bg-primary origin-center transition-all ease-in-out duration-300"
+            />
+        </button>
+    </div>
 </template>
 
-<style scoped lang="postcss">
+<style lang="postcss" scoped>
 .active {
     span:nth-child(1) {
         transform: translateY(7px) rotate(45deg);

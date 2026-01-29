@@ -34,7 +34,7 @@ const currentYear = new Date().getFullYear();
                                 <li v-for="link in siteMapLinks" :key="link.label">
                                     <NuxtLink
                                         :href="link.href"
-                                        class="text-foreground/50 transition-colors duration-300 ease-in-out active:text-primary hover:text-primary"
+                                        class="py-2 text-foreground/50 transition-colors duration-300 ease-in-out active:text-primary hover:text-primary"
                                     >
                                         {{ link.label }}
                                     </NuxtLink>
@@ -47,7 +47,7 @@ const currentYear = new Date().getFullYear();
                             <ul class="flex flex-col mt-6 space-y-3 text-foreground/50">
                                 <li v-for="link in socialLinks" :key="link.label">
                                     <NuxtLink
-                                        class="text-foreground/50 transition-colors duration-300 ease-in-out active:text-primary hover:text-primary"
+                                        class="py-2 text-foreground/50 transition-colors duration-300 ease-in-out active:text-primary hover:text-primary"
                                         :href="link.href"
                                         target="_blank"
                                         rel="noopener noreferrer"

@@ -64,7 +64,7 @@ const toggleMobileMenu = () => {
 
                     <HamburgerButton
                         :is-active="isMobileMenuOpen"
-                        class="block lg:hidden"
+                        class="block cursor-pointer group pl-4 py-4 lg:hidden"
                         @click="toggleMobileMenu"
                     />
                 </div>
