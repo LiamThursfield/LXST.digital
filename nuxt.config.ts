@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     fonts: {
         // This tells Nuxt to inject <link rel="preload"> for these families
         defaults: {
-            preload: true
+            preload: true,
+            weights: ['400', '500', '700']
         }
     },
 
@@ -82,4 +83,4 @@ export default defineNuxtConfig({
             link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
         }
     }
-})
+});

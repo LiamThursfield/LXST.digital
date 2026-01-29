@@ -50,6 +50,8 @@
 
     --tracking-normal: -0.01em;
     --spacing: 0.25rem;
+
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 :root {
@@ -72,7 +74,7 @@
     --muted-foreground: oklch(0.5544 0.0407 257.4166);
 
     --accent: oklch(0.8791 0.2134 155.9529);
-    --accent-foreground: oklch(0.7324 0.1767 156.2757);
+    --accent-foreground: oklch(1 0 0);
 
     --destructive: oklch(0.6368 0.2078 25.3313);
     --destructive-foreground: oklch(0.9842 0.0034 247.8575);
@@ -132,7 +134,7 @@
     --muted-foreground: oklch(0.7107 0.0351 256.7878);
 
     --accent: oklch(0.8791 0.2134 155.9529);
-    --accent-foreground: oklch(0.8791 0.2134 155.9529);
+    --accent-foreground: oklch(0.1149 0 0);
 
     --destructive: oklch(0.645 0.2154 16.4393);
     --destructive-foreground: oklch(0.1149 0 0);
