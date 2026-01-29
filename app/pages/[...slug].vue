@@ -1,10 +1,8 @@
-<script lang="ts" setup>
-import HeroWithCta from '~/components/project/heroes/HeroWithCta.vue';
-</script>
+<script lang="ts" setup></script>
 
 <template>
     <div class="flex flex-col">
-        <HeroWithCta
+        <ProjectHeroesHeroWithCTA
             heading="Crafting Digital Experiences That Define the Future"
             subheading="DIGITAL PRODUCT AGENCY"
             :primary-cta="{
