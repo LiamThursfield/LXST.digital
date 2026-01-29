@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
@@ -15,14 +15,7 @@ export default defineNuxtConfig({
         preset: 'cloudflare-pages'
     },
 
-    css: ['./app/assets/css/tailwind.css'],
-
-    fonts: {
-        // This tells Nuxt to inject <link rel="preload"> for these families
-        defaults: {
-            preload: true
-        }
-    },
+    css: ['./app/assets/css/tailwind.css', './app/assets/css/main.css'],
 
     shadcn: {
         /**
@@ -82,4 +75,4 @@ export default defineNuxtConfig({
             link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
         }
     }
-})
+});
