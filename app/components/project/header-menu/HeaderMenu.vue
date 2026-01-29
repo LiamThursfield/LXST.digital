@@ -39,7 +39,7 @@ const toggleMobileMenu = () => {
                         <li v-for="link in links" :key="link.label">
                             <NuxtLink
                                 :to="link.href"
-                                class="bg-foreground/0 block font-semibold px-4 py-2 rounded-full text-center text-foreground hover:bg-foreground/5 hover:text-primary transition-colors duration-300 ease-linear"
+                                class="bg-foreground/0 block font-semibold px-4 py-2 rounded-full text-center text-foreground active:bg-foreground/5 active:text-primary hover:bg-foreground/5 hover:text-primary transition-colors duration-300 ease-linear"
                             >
                                 {{ link.label }}
                             </NuxtLink>
@@ -82,7 +82,7 @@ const toggleMobileMenu = () => {
                     <li v-for="link in links" :key="link.label" class="w-full">
                         <NuxtLink
                             :to="link.href"
-                            class="bg-foreground/0 block font-semibold px-2 py-2 rounded-full text-center text-foreground text-lg hover:bg-foreground/5 hover:text-primary transition-colors duration-150 ease-in"
+                            class="bg-foreground/0 block font-semibold px-2 py-2 rounded-full text-center text-foreground text-lg active:bg-foreground/5 active:text-primary hover:bg-foreground/5 hover:text-primary transition-colors duration-150 ease-in"
                             @click="toggleMobileMenu"
                         >
                             {{ link.label }}

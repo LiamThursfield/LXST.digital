@@ -24,7 +24,7 @@ const handleClick = () => {
         <span
             v-for="i in 3"
             :key="i"
-            class="block h-[2px] bg-foreground rounded w-full group-hover:bg-primary transition-all ease-in-out duration-300 origin-center"
+            class="block h-[2px] bg-foreground rounded w-full group-active:bg-primary group-hover:bg-primary transition-all ease-in-out duration-300 origin-center"
         />
     </button>
 </template>
@@ -37,6 +37,7 @@ const handleClick = () => {
 
     span:nth-child(2) {
         opacity: 0;
+        transform: scale(0);
     }
 
     span:nth-child(3) {
