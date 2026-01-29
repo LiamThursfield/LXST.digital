@@ -39,7 +39,6 @@ defineProps<{
                     class="inline-flex transition-colors duration-300 ease-linear rounded-full"
                     size="lg"
                     variant="outline-primary"
-                    @click="toggleMobileMenu"
                 >
                     <NuxtLink
                         class="bg-background/20 font-semibold transition-colors duration-400 ease-linear !text-base py-6 lg:px-16"
@@ -55,7 +54,6 @@ defineProps<{
                     class="inline-flex transition-colors duration-300 ease-linear rounded-full"
                     size="lg"
                     variant="ghost"
-                    @click="toggleMobileMenu"
                 >
                     <NuxtLink
                         class="bg-background/60 border font-semibold transition-colors duration-400 ease-linear !text-base py-6 lg:px-16"
