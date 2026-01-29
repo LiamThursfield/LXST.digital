@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import HeaderMenu from '~/components/project/header-menu/HeaderMenu.vue';
-import type { HeaderMenuLink } from '~/components/project/types';
+import type { LinkWithLabel } from '~/components/project/types';
 
-let links: Array<HeaderMenuLink> = [
+let links: Array<LinkWithLabel> = [
     {
         label: 'Services',
         href: '#'
