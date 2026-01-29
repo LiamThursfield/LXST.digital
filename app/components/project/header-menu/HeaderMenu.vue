@@ -1,27 +1,14 @@
 <script lang="ts" setup>
 import TextLogo from '~/components/project/logos/TextLogo.vue';
 import HamburgerButton from '~/components/lxst/buttons/HamburgerButton.vue';
+import type { HeaderMenuLink } from '~/components/project/types';
+
+defineProps<{
+    links: Array<HeaderMenuLink>;
+    cta?: HeaderMenuLink;
+}>();
 
 let isMobileMenuOpen = ref(false);
-
-let links: Array<{ label: string; href: string }> = [
-    {
-        label: 'Services',
-        href: '#'
-    },
-    {
-        label: 'Work',
-        href: '#'
-    },
-    {
-        label: 'About',
-        href: '#'
-    },
-    {
-        label: 'Contact',
-        href: '#'
-    }
-];
 
 /**
  * Toggle the mobile menu, as well as the body class
@@ -60,6 +47,7 @@ const toggleMobileMenu = () => {
                     </ul>
 
                     <Button
+                        v-if="cta != null"
                         as-child
                         class="hidden lg:inline-flex transition-colors duration-300 ease-linear rounded-full"
                         size="lg"
@@ -68,9 +56,9 @@ const toggleMobileMenu = () => {
                     >
                         <NuxtLink
                             class="font-semibold py-5 transition-colors duration-400 ease-linear !text-base"
-                            href="/#"
+                            :href="cta.href"
                         >
-                            Start Project
+                            {{ cta.label }}
                         </NuxtLink>
                     </Button>
 
@@ -103,13 +91,14 @@ const toggleMobileMenu = () => {
 
                     <li class="w-full">
                         <Button
+                            v-if="cta != null"
                             as-child
                             class="py-6 rounded-full"
                             variant="outline-primary"
                             @click="toggleMobileMenu"
                         >
-                            <NuxtLink class="font-semibold w-full !text-lg" href="/#">
-                                Start Project
+                            <NuxtLink class="font-semibold w-full !text-lg" :href="cta.href">
+                                {{ cta.label }}
                             </NuxtLink>
                         </Button>
                     </li>

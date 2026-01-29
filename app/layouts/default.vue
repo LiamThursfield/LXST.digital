@@ -1,5 +1,30 @@
 <script lang="ts" setup>
 import HeaderMenu from '~/components/project/header-menu/HeaderMenu.vue';
+import type { HeaderMenuLink } from '~/components/project/types';
+
+let links: Array<HeaderMenuLink> = [
+    {
+        label: 'Services',
+        href: '#'
+    },
+    {
+        label: 'Work',
+        href: '#'
+    },
+    {
+        label: 'About',
+        href: '#'
+    },
+    {
+        label: 'Contact',
+        href: '#'
+    }
+];
+
+let primaryCta = {
+    label: 'Get Started',
+    href: '#'
+};
 </script>
 
 <template>
@@ -10,7 +35,7 @@ import HeaderMenu from '~/components/project/header-menu/HeaderMenu.vue';
             />
         </div>
 
-        <HeaderMenu />
+        <HeaderMenu :links="links" :cta="primaryCta" />
 
         <!-- Header Spacer -->
         <div class="mt-22" />
