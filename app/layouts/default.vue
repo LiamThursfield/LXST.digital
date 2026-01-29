@@ -4,19 +4,19 @@ import type { LinkWithLabel } from '~/components/project/types';
 let links: Array<LinkWithLabel> = [
     {
         label: 'Services',
-        href: '#'
+        href: '/services'
     },
     {
         label: 'Work',
-        href: '#'
+        href: '/work'
     },
     {
         label: 'About',
-        href: '#'
+        href: '/about'
     },
     {
         label: 'Contact',
-        href: '#'
+        href: '/contact'
     }
 ];
 
@@ -27,17 +27,17 @@ let socialLinks: Array<LinkWithLabel> = [
     },
     {
         label: 'Facebook',
-        href: '#'
+        href: '/facebook'
     },
     {
         label: 'Twitter/X',
-        href: '#'
+        href: '/twitter'
     }
 ];
 
 let primaryCta = {
     label: 'Get Started',
-    href: '#'
+    href: '/get-started'
 };
 </script>
 

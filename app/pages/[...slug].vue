@@ -7,11 +7,11 @@
             subheading="DIGITAL PRODUCT AGENCY"
             :primary-cta="{
                 label: 'Get Started',
-                href: '#'
+                href: '/get-started'
             }"
             :secondary-cta="{
                 label: 'Our Work',
-                href: '#'
+                href: '/our-work'
             }"
         />
     </div>
