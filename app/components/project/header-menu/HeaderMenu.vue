@@ -22,25 +22,37 @@ let links: Array<{ label: string; href: string }> = [
         href: '#'
     }
 ];
+
+/**
+ * Toggle the mobile menu, as well as the body class
+ */
+const toggleMobileMenu = () => {
+    isMobileMenuOpen.value = !isMobileMenuOpen.value;
+
+    if (isMobileMenuOpen.value) {
+        document.body.classList.add('mobile-open');
+    } else {
+        document.body.classList.remove('mobile-open');
+    }
+};
 </script>
 
 <template>
     <div>
         <nav class="fixed top-0 w-full z-100">
-            <div class="mx-auto py-6 container">
+            <div class="mx-auto py-6 container px-gutter">
                 <div
-                    class="backdrop-blur-sm bg-background/60 border border-border flex flex-row items-center justify-between px-6 py-4 rounded-full w-full"
+                    class="backdrop-blur-md bg-background/60 border border-border flex flex-row items-center justify-between px-6 py-2 rounded-full w-full"
                 >
-                    <NuxtLink href="/">
+                    <NuxtLink class="py-2" href="/">
                         <TextLogo />
                     </NuxtLink>
 
-                    <ul class="flex-row justify-between hidden space-x-6 md:inline-flex">
+                    <ul class="flex-row justify-between hidden space-x-2 lg:inline-flex">
                         <li v-for="link in links" :key="link.label">
                             <NuxtLink
                                 :to="link.href"
-                                class="block bg-foreground/0 cursor-pointer font-semibold py-4 px-6 rounded-full text-center text-foreground transition-colors duration-300 ease-linear hover:text-primary hover:bg-foreground/5"
-                                @click="isMobileMenuOpen = !isMobileMenuOpen"
+                                class="bg-foreground/0 block cursor-pointer font-semibold px-4 py-2 rounded-full text-center text-foreground hover:bg-foreground/5 hover:text-primary transition-colors duration-300 ease-linear"
                             >
                                 {{ link.label }}
                             </NuxtLink>
@@ -49,41 +61,41 @@ let links: Array<{ label: string; href: string }> = [
 
                     <Button
                         as-child
+                        class="hidden lg:inline-flex transition-colors duration-300 ease-linear rounded-full"
                         size="lg"
                         variant="outline-primary"
-                        class="hidden md:inline-flex transition-colors duration-300 ease-linear rounded-full"
-                        @click="isMobileMenuOpen = !isMobileMenuOpen"
+                        @click="toggleMobileMenu"
                     >
                         <NuxtLink
+                            class="font-semibold py-5 transition-colors duration-400 ease-linear !text-base"
                             href="/#"
-                            class="font-semi-bold py-7 transition-colors duration-400 ease-linear !text-lg"
                         >
                             Start Project
                         </NuxtLink>
                     </Button>
 
                     <HamburgerButton
-                        class="block md:hidden"
                         :is-active="isMobileMenuOpen"
-                        @click="isMobileMenuOpen = !isMobileMenuOpen"
+                        class="block lg:hidden"
+                        @click="toggleMobileMenu"
                     />
                 </div>
             </div>
         </nav>
 
         <nav
-            class="mobile-menu fixed top-0 right-0 bg-background/90 z-50 w-full h-screen backdrop-blur-sm md:hidden"
             :class="{
                 open: isMobileMenuOpen
             }"
+            class="mobile-menu backdrop-blur-xs bg-background/90 fixed h-screen overflow-y-auto pb-6 right-0 top-0 w-full z-50 lg:hidden"
         >
-            <div class="container mx-auto mt-23 pt-6">
+            <div class="container mx-auto mt-23 pt-6 px-gutter">
                 <ul class="mobile-nav-links flex flex-col items-center space-y-4">
                     <li v-for="link in links" :key="link.label" class="w-full">
                         <NuxtLink
                             :to="link.href"
-                            class="block bg-foreground/0 cursor-pointer font-semibold py-2 rounded-full text-center text-xl text-foreground transition-colors duration-150 ease-in hover:text-primary hover:bg-foreground/5"
-                            @click="isMobileMenuOpen = !isMobileMenuOpen"
+                            class="bg-foreground/0 block cursor-pointer font-semibold px-2 py-2 rounded-full text-center text-foreground text-lg hover:bg-foreground/5 hover:text-primary transition-colors duration-150 ease-in"
+                            @click="toggleMobileMenu"
                         >
                             {{ link.label }}
                         </NuxtLink>
@@ -93,9 +105,10 @@ let links: Array<{ label: string; href: string }> = [
                         <Button
                             as-child
                             class="py-6 rounded-full"
-                            @click="isMobileMenuOpen = !isMobileMenuOpen"
+                            variant="outline-primary"
+                            @click="toggleMobileMenu"
                         >
-                            <NuxtLink href="/#" class="font-semi-bold w-full text-xl">
+                            <NuxtLink class="font-semibold w-full !text-lg" href="/#">
                                 Start Project
                             </NuxtLink>
                         </Button>

@@ -3,9 +3,15 @@
 </script>
 
 <template>
-    <div class="cursor-pointer flex flex-row select-none text-2xl">
-        <span class="text-primary font-bold">LXST</span>
-        <span>.digital</span>
+    <div class="cursor-pointer flex flex-row select-none text-2xl group">
+        <span
+            class="text-primary font-semibold group-hover:text-primary/80 transition-colors ease-in-out duration-300"
+        >
+            LXST
+        </span>
+        <span class="group-hover:text-primary/80 transition-colors ease-in-out duration-300">
+            .digital
+        </span>
     </div>
 </template>
 

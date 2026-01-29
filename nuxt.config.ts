@@ -15,7 +15,7 @@ export default defineNuxtConfig({
         preset: 'cloudflare-pages'
     },
 
-    css: ['./app/assets/css/tailwind.css'],
+    css: ['./app/assets/css/tailwind.css', './app/assets/css/main.css'],
 
     shadcn: {
         /**
