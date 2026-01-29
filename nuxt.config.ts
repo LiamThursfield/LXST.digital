@@ -17,14 +17,6 @@ export default defineNuxtConfig({
 
     css: ['./app/assets/css/tailwind.css'],
 
-    fonts: {
-        // This tells Nuxt to inject <link rel="preload"> for these families
-        defaults: {
-            preload: true,
-            weights: ['400', '500', '700']
-        }
-    },
-
     shadcn: {
         /**
          * Prefix for all the imported component
