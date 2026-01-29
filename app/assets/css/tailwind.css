@@ -181,4 +181,15 @@
     body {
         @apply bg-background text-foreground;
     }
+
+    a,
+    button,
+    [button] {
+        @apply cursor-pointer select-none;
+    }
+
+    a:disabled,
+    button:disabled {
+        @apply cursor-default;
+    }
 }

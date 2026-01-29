@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="cursor-pointer flex flex-row select-none text-2xl group">
+    <div class="flex flex-row select-none text-2xl group">
         <span
             class="text-primary font-semibold group-hover:text-primary/80 transition-colors ease-in-out duration-300"
         >

@@ -14,7 +14,7 @@ const handleClick = () => {
 <template>
     <button
         type="button"
-        class="hamburger-button cursor-pointer flex flex-col group justify-between w-6 h-4"
+        class="hamburger-button flex flex-col group justify-between w-6 h-4"
         :class="{
             active: props.isActive
         }"
