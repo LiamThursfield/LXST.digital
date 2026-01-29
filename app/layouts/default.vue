@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import HeaderMenu from '~/components/project/header-menu/HeaderMenu.vue';
 import type { LinkWithLabel } from '~/components/project/types';
 
 let links: Array<LinkWithLabel> = [
@@ -21,6 +20,21 @@ let links: Array<LinkWithLabel> = [
     }
 ];
 
+let socialLinks: Array<LinkWithLabel> = [
+    {
+        label: 'Instagram',
+        href: 'https://instagram.co/lxst.digital'
+    },
+    {
+        label: 'Facebook',
+        href: '#'
+    },
+    {
+        label: 'Twitter/X',
+        href: '#'
+    }
+];
+
 let primaryCta = {
     label: 'Get Started',
     href: '#'
@@ -35,12 +49,16 @@ let primaryCta = {
             />
         </div>
 
-        <HeaderMenu :links="links" :cta="primaryCta" />
+        <div class="relative">
+            <ProjectHeaderMenu :links="links" :cta="primaryCta" />
 
-        <!-- Header Spacer -->
-        <div class="mt-22" />
+            <!-- Header Spacer -->
+            <div class="mt-22" />
 
-        <slot />
+            <slot />
+
+            <ProjectFooter :site-map-links="links" :social-links="socialLinks" />
+        </div>
     </div>
 </template>
 
