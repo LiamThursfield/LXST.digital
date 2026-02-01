@@ -17,7 +17,7 @@ defineProps<{
             />
         </div>
 
-        <div class="flex flex-col items-center relative">
+        <div class="flex flex-col items-center max-w-content-container mx-auto relative">
             <h2 class="font-semibold text-center text-primary tracking-wider">{{ subheading }}</h2>
 
             <h1
