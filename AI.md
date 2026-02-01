@@ -4,6 +4,22 @@
 
 LXST.digital is a high-performance, SEO-friendly website template built with Nuxt 4, Tailwind CSS 4, and shadcn-vue. It aims to provide a premium feel with clean, reusable code.
 
+## Business Context & Goals
+
+### 1. Positioning
+- **Identity**: "We" (Agency Persona). A Digital Product Agency.
+- **Tone**: Professional, High-End, Trustworthy, Innovative.
+
+### 2. Services
+- **Bespoke Websites**: CMS/CRM powered sites for niche industries (Barbershops, Pubs, DJs/Artists).
+- **Web Applications**: Custom web software (e.g., DJ library management).
+- **Tech Stack Support**: Maintenance/Upgrades for Nuxt/Vue/Laravel projects.
+
+### 3. Target Audience
+- Small businesses seeking premium digital presence.
+- Artists/DJs needing professional tools.
+- Existing site owners needing technical help.
+
 ## Key Architectures
 
 ### 1. Nuxt 4 App Directory
@@ -18,7 +34,12 @@ LXST.digital is a high-performance, SEO-friendly website template built with Nux
 
 - We use the new `@theme` block in `app/assets/css/tailwind.css`.
 - Avoid `tailwind.config.js` unless absolutely necessary for external plugins.
-- Use CSS variables defined in the theme for consistent styling.
+- We use the new `@theme` block in `app/assets/css/tailwind.css`.
+- Avoid `tailwind.config.js` unless absolutely necessary for external plugins.
+- **CRITICAL**: Use CSS variables defined in the theme for consistent styling.
+    - **DO NOT** use arbitrary or default Tailwind colors like `bg-red-500` or `text-blue-600`.
+    - **ALWAYS** use theme tokens (e.g., `bg-primary`, `text-muted-foreground`, `border-border`).
+    - Verify colors in `app/assets/css/tailwind.css` before implementing.
 
 ### 3. shadcn-vue Integration
 
