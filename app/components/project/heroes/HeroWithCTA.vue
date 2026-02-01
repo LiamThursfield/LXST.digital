@@ -36,12 +36,12 @@ defineProps<{
             >
                 <Button
                     as-child
-                    class="inline-flex transition-colors duration-300 ease-linear rounded-full"
+                    class="inline-flex duration-300 ease-out"
                     size="lg"
                     variant="outline-primary"
                 >
                     <NuxtLink
-                        class="bg-background/20 font-semibold transition-colors duration-400 ease-linear !text-base py-6 lg:px-16"
+                        class="bg-background/20 font-semibold transition-colors duration-300 ease-out !text-base py-6 lg:px-16"
                         :href="primaryCta.href"
                     >
                         {{ primaryCta.label }}
@@ -51,12 +51,12 @@ defineProps<{
                 <Button
                     v-if="secondaryCta != null"
                     as-child
-                    class="inline-flex transition-colors duration-300 ease-linear rounded-full"
+                    class="inline-flex duration-300 ease-out"
                     size="lg"
                     variant="ghost"
                 >
                     <NuxtLink
-                        class="bg-background/60 border font-semibold transition-colors duration-400 ease-linear !text-base py-6 lg:px-16"
+                        class="bg-background/60 border font-semibold transition-colors duration-300 ease-out !text-base py-6 lg:px-16"
                         :href="secondaryCta.href"
                     >
                         {{ secondaryCta.label }}

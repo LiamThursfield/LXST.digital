@@ -25,7 +25,7 @@ const handleClick = () => {
             <span
                 v-for="i in 3"
                 :key="i"
-                class="block h-[2px] bg-foreground rounded w-full group-active:bg-primary group-hover:bg-primary origin-center transition-all ease-in-out duration-300"
+                class="block h-[2px] bg-foreground rounded w-full group-active:bg-primary group-hover:bg-primary origin-center transition-all ease-out duration-300"
             />
         </button>
     </div>

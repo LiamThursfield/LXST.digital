@@ -39,7 +39,7 @@ const toggleMobileMenu = () => {
                         <li v-for="link in links" :key="link.label">
                             <NuxtLink
                                 :to="link.href"
-                                class="bg-foreground/0 block font-semibold px-4 py-2 rounded-full text-center text-foreground active:bg-foreground/5 active:text-primary hover:bg-foreground/5 hover:text-primary transition-colors duration-300 ease-linear"
+                                class="bg-foreground/0 block font-semibold px-4 py-2 rounded-full text-center text-foreground active:bg-foreground/5 active:text-primary hover:bg-foreground/5 hover:text-primary transition-colors duration-300 ease-out"
                             >
                                 {{ link.label }}
                             </NuxtLink>
@@ -49,13 +49,13 @@ const toggleMobileMenu = () => {
                     <Button
                         v-if="cta != null"
                         as-child
-                        class="hidden lg:inline-flex transition-colors duration-300 ease-linear rounded-full"
+                        class="hidden lg:inline-flex duration-300 ease-out"
                         size="lg"
                         variant="outline-primary"
                         @click="toggleMobileMenu"
                     >
                         <NuxtLink
-                            class="font-semibold py-5 transition-colors duration-400 ease-linear !text-base"
+                            class="font-semibold py-5 transition-colors duration-300 ease-out !text-base"
                             :href="cta.href"
                         >
                             {{ cta.label }}
@@ -82,7 +82,7 @@ const toggleMobileMenu = () => {
                     <li v-for="link in links" :key="link.label" class="w-full">
                         <NuxtLink
                             :to="link.href"
-                            class="bg-foreground/0 block font-semibold px-2 py-2 rounded-full text-center text-foreground text-lg active:bg-foreground/5 active:text-primary hover:bg-foreground/5 hover:text-primary transition-colors duration-150 ease-in"
+                            class="bg-foreground/0 block font-semibold px-2 py-2 rounded-full text-center text-foreground text-lg active:bg-foreground/5 active:text-primary hover:bg-foreground/5 hover:text-primary transition-colors duration-300 ease-in"
                             @click="toggleMobileMenu"
                         >
                             {{ link.label }}
@@ -93,7 +93,7 @@ const toggleMobileMenu = () => {
                         <Button
                             v-if="cta != null"
                             as-child
-                            class="py-6 rounded-full"
+                            class="py-6"
                             variant="outline-primary"
                             @click="toggleMobileMenu"
                         >
