@@ -3,6 +3,10 @@ import type { LinkWithLabel } from '~/components/project/types';
 
 let links: Array<LinkWithLabel> = [
     {
+        label: 'Home',
+        href: '/'
+    },
+    {
         label: 'Services',
         href: '/services'
     },
@@ -37,7 +41,7 @@ let socialLinks: Array<LinkWithLabel> = [
 
 let primaryCta = {
     label: 'Get Started',
-    href: '/get-started'
+    href: '/contact'
 };
 
 onMounted(() => {
@@ -53,9 +57,6 @@ onBeforeUnmount(() => {
     <div class="min-h-screen flex flex-col relative">
         <div class="relative">
             <ProjectHeaderMenu :links="links" :cta="primaryCta" />
-
-            <!-- Header Spacer -->
-            <div class="mt-22" />
 
             <slot />
 
