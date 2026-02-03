@@ -17,6 +17,11 @@ export default defineNuxtConfig({
 
     css: ['./app/assets/css/tailwind.css', './app/assets/css/main.css'],
 
+    icon: {
+        mode: 'css',
+        cssLayer: 'base'
+    },
+
     shadcn: {
         /**
          * Prefix for all the imported component

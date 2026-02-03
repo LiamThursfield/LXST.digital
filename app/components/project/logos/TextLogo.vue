@@ -5,12 +5,12 @@
 <template>
     <div class="flex flex-row select-none text-2xl group">
         <span
-            class="text-primary font-semibold group-active:text-primary/80 group-hover:text-primary/80 transition-colors ease-in-out duration-300"
+            class="text-primary font-semibold group-active:text-primary/80 group-hover:text-primary/80 transition-colors ease-out duration-300"
         >
             LXST
         </span>
         <span
-            class="group-active:text-primary/80 group-hover:text-primary/80 transition-colors ease-in-out duration-300"
+            class="group-active:text-primary/80 group-hover:text-primary/80 transition-colors ease-out duration-300"
         >
             .digital
         </span>
