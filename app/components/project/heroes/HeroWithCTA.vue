@@ -4,6 +4,7 @@ import type { LinkWithLabel } from '~/components/project/types';
 defineProps<{
     heading: string;
     subheading: string;
+    body?: string;
     primaryCta: LinkWithLabel;
     secondaryCta?: LinkWithLabel;
 }>();
@@ -27,8 +28,10 @@ defineProps<{
             </h1>
 
             <p class="max-w-lg mt-6 mx-auto text-center text-foreground/60 text-lg lg:text-xl">
-                We build high-performance websites and digital products for brands that are ready to
-                lead their industry.
+                {{
+                    body ??
+                    'We build high-performance websites and digital products for brands that are ready to lead their industry.'
+                }}
             </p>
 
             <div
