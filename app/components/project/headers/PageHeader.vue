@@ -18,7 +18,7 @@ withDefaults(defineProps<Props>(), {
         <!-- Background Glow -->
         <div class="absolute inset-0 pointer-events-none">
             <div
-                class="absolute top-0 left-1/2 -translate-x-1/2 w-[100vw] h-[600px] bg-[radial-gradient(closest-side,var(--color-primary),transparent)] opacity-15 blur-[80px] -mt-[180px] md:-mt-[200px]"
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-[99vw] h-[600px] bg-[radial-gradient(closest-side,var(--color-primary),transparent)] opacity-15 blur-[80px] -mt-[180px] md:-mt-[200px]"
             />
         </div>
 
