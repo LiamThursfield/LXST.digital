@@ -8,7 +8,7 @@ import TechStackRow from '~/components/project/marketing/TechStackRow.vue';
 
 useSeoMeta({
     title: 'Contact | LXST.digital',
-    description: 'Start your project with LXST.digital. Contact us for a consultation.'
+    description: 'Start your project with LXST.digital. Contact us for a chat.'
 });
 
 const { projects } = useData();
@@ -16,7 +16,7 @@ const { projects } = useData();
 
 <template>
     <div>
-        <PageHeader subtitle="LETS BUILD SOMETHING GREAT" title="Start Your Project" />
+        <PageHeader subtitle="LETS BUILD SOMETHING GREAT" title="Let's Chat" />
 
         <div class="container mx-auto max-w-4xl">
             <ProjectUtilitiesPageSection>

@@ -57,7 +57,7 @@ useSeoMeta({
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button as-child class="h-14 px-8 text-lg" size="lg" variant="secondary">
-                        <NuxtLink to="/contact">Start Your Project</NuxtLink>
+                        <NuxtLink to="/contact">Let's Chat</NuxtLink>
                     </Button>
                 </div>
             </div>

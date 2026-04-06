@@ -18,9 +18,10 @@ const currentYear = new Date().getFullYear();
                     <div class="flex flex-col space-y-8">
                         <h3><TextLogo /></h3>
 
-                        <p class="max-w-[300px] text-foreground/50">
-                            A digital product agency crafting experiences for the modern web. We
-                            combine aesthetics with performance and functionality.
+                        <p class="max-w-75 text-foreground/50">
+                            Crafting digital experiences starts with a conversation. We pair
+                            thoughtful collaboration with high-performance engineering to build
+                            everything from complex web apps to full-scale digital platforms.
                         </p>
                     </div>
 

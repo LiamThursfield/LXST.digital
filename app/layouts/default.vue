@@ -40,7 +40,7 @@ let socialLinks: Array<LinkWithLabel> = [
 ];
 
 let primaryCta = {
-    label: 'Get Started',
+    label: "Let's Chat",
     href: '/contact'
 };
 

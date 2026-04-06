@@ -28,10 +28,7 @@ defineProps<{
             </h1>
 
             <p class="max-w-lg mt-6 mx-auto text-center text-foreground/60 text-lg lg:text-xl">
-                {{
-                    body ??
-                    'We build high-performance websites and digital products for brands that are ready to lead their industry.'
-                }}
+                {{ body ?? 'We believe the best digital products start with a real conversation.' }}
             </p>
 
             <div
@@ -44,7 +41,7 @@ defineProps<{
                     variant="outline-primary"
                 >
                     <NuxtLink
-                        class="bg-background/20 font-semibold transition-colors duration-300 ease-out !text-base py-6 lg:px-16"
+                        class="bg-background/20 font-semibold transition-colors duration-300 ease-out text-base! py-6 lg:px-16"
                         :href="primaryCta.href"
                     >
                         {{ primaryCta.label }}
@@ -59,7 +56,7 @@ defineProps<{
                     variant="ghost"
                 >
                     <NuxtLink
-                        class="bg-background/60 border font-semibold transition-colors duration-300 ease-out !text-base py-6 lg:px-16"
+                        class="bg-background/60 border font-semibold transition-colors duration-300 ease-out text-base! py-6 lg:px-16"
                         :href="secondaryCta.href"
                     >
                         {{ secondaryCta.label }}
