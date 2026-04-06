@@ -28,15 +28,15 @@ let socialLinks: Array<LinkWithLabel> = [
     {
         label: 'Instagram',
         href: 'https://instagram.co/lxst.digital'
-    },
-    {
-        label: 'Facebook',
-        href: '/facebook'
-    },
-    {
-        label: 'Twitter/X',
-        href: '/twitter'
     }
+    // {
+    //     label: 'Facebook',
+    //     href: '/facebook'
+    // },
+    // {
+    //     label: 'Twitter/X',
+    //     href: '/twitter'
+    // }
 ];
 
 let primaryCta = {
