@@ -23,7 +23,7 @@ export function useData() {
             type: 'Bespoke Website',
             description:
                 'A dynamic digital presence for a DJ duo. Designed to promote upcoming events, a press-kit, and seamless booking management.',
-            image: '',
+            image: '/images/projects/moss-and-field-thumbnail.png',
             link: 'https://mossandfield.co.uk/?utm_source=lxst.digital'
         }
     ]);
