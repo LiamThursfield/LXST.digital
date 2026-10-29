@@ -1,48 +1,9 @@
 <script lang="ts" setup>
-import type { LinkWithLabel } from '~/components/project/types';
+import SiteFooter from '~/components/project/footer/SiteFooter.vue';
+import SiteHeader from '~/components/project/header-menu/SiteHeader.vue';
+import { useNavigation } from '~/composables/project/navigation';
 
-let links: Array<LinkWithLabel> = [
-    {
-        label: 'Home',
-        href: '/'
-    },
-    {
-        label: 'Services',
-        href: '/services'
-    },
-    {
-        label: 'Work',
-        href: '/work'
-    },
-    {
-        label: 'About',
-        href: '/about'
-    },
-    {
-        label: 'Contact',
-        href: '/contact'
-    }
-];
-
-let socialLinks: Array<LinkWithLabel> = [
-    {
-        label: 'Instagram',
-        href: 'https://instagram.co/lxst.digital'
-    }
-    // {
-    //     label: 'Facebook',
-    //     href: '/facebook'
-    // },
-    // {
-    //     label: 'Twitter/X',
-    //     href: '/twitter'
-    // }
-];
-
-let primaryCta = {
-    label: "Let's Chat",
-    href: '/contact'
-};
+const { mainLinks, primaryCta, sitemapLinks, elsewhereLinks } = useNavigation();
 
 onMounted(() => {
     // Adding an empty listener to the body enables :active styles in iOS Safari
@@ -54,15 +15,13 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col relative">
-        <div class="relative">
-            <ProjectHeaderMenu :links="links" :cta="primaryCta" />
+    <div class="min-h-screen flex flex-col">
+        <SiteHeader :cta="primaryCta" :links="mainLinks" />
 
+        <main class="flex-1">
             <slot />
+        </main>
 
-            <ProjectFooter :site-map-links="links" :social-links="socialLinks" />
-        </div>
+        <SiteFooter :elsewhere-links="elsewhereLinks" :sitemap-links="sitemapLinks" />
     </div>
 </template>
-
-<style lang="postcss" scoped></style>

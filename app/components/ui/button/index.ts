@@ -4,27 +4,30 @@ import { cva } from 'class-variance-authority';
 export { default as Button } from './Button.vue';
 
 export const buttonVariants = cva(
-    'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+    'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
     {
         variants: {
             variant: {
                 default:
-                    'bg-primary text-primary-foreground shadow active:bg-primary/90 hover:bg-primary/90',
+                    'bg-primary text-primary-foreground active:bg-primary-hover hover:bg-primary-hover',
+                // Dark-on-light (or light-on-dark) button for use on a `bg-inverse` band
+                inverse:
+                    'bg-inverse-foreground text-inverse active:bg-inverse-foreground/85 hover:bg-inverse-foreground/85',
                 destructive:
                     'bg-destructive text-destructive-foreground shadow-sm active:bg-destructive/90 hover:bg-destructive/90',
                 outline:
                     'border border-input bg-background shadow-sm hover:bg-accent active:text-accent-foreground active:bg-accent hover:text-accent-foreground',
                 'outline-primary':
-                    'border border-primary bg-background shadow-sm text-primary active:bg-primary active:text-primary-foreground hover:bg-primary hover:text-primary-foreground',
+                    'border border-primary bg-background shadow-sm text-highlight active:bg-primary active:text-primary-foreground hover:bg-primary hover:text-primary-foreground',
                 secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
                 ghost: 'active:bg-accent active:text-accent-foreground hover:bg-accent hover:text-accent-foreground',
-                link: 'text-primary underline-offset-4 active:underline hover:underline'
+                link: 'text-highlight underline-offset-4 active:underline hover:underline'
             },
             size: {
-                default: 'h-9 px-4 py-2',
+                default: 'h-11 px-4',
                 xs: 'h-7 px-2',
                 sm: 'h-8 px-3 text-xs',
-                lg: 'h-10 px-8',
+                lg: 'h-14 px-5.5 text-lg',
                 wide: 'px-4 py-3 min-w-64',
                 icon: 'h-9 w-9',
                 'icon-sm': 'size-8',

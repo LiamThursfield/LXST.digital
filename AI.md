@@ -32,10 +32,12 @@ LXST.digital is a high-performance, SEO-friendly website template built with Nux
 
 ### 2. Tailwind CSS 4 (CSS-first)
 
-- We use the new `@theme` block in `app/assets/css/tailwind.css`.
-- Avoid `tailwind.config.js` unless absolutely necessary for external plugins.
-- We use the new `@theme` block in `app/assets/css/tailwind.css`.
-- Avoid `tailwind.config.js` unless absolutely necessary for external plugins.
+- All theming lives in `app/assets/css/tailwind.css`; there is no `tailwind.config.js`.
+- Tokens come in three layers: raw `--palette-*` values → semantic tokens (light in `:root`, dark in `.dark`) → `@theme` utilities. Re-skin by editing the palette; change rounding with `--radius`.
+- Light/dark is handled by `@nuxtjs/color-mode` (toggles `.dark` on `<html>`); `ThemeToggle` cycles system/light/dark.
+- Use `text-highlight` (not `text-primary`) for brand-green text and thin lines; `primary` is for solid fills and is too light to read as text in light mode.
+- Wrap a region in `.invert-theme` to render it in the opposite mode (the contact page does this); components inside need no changes.
+- Pages are assembled from `components/project/`: layout pieces (`Container`, `SiteSection`, `PageHero`, `SectionHeading`, `CtaBand`) and content pieces (`MetaList`, `RuledList`, `LabelledRows`, `StepGrid`, `FaqList`, `ProjectCard`, `ProjectRow`, `ChoiceChips`...). Shared content (services, projects) lives in `composables/project/data.ts`; navigation in `composables/project/navigation.ts`.
 - **CRITICAL**: Use CSS variables defined in the theme for consistent styling.
     - **DO NOT** use arbitrary or default Tailwind colors like `bg-red-500` or `text-blue-600`.
     - **ALWAYS** use theme tokens (e.g., `bg-primary`, `text-muted-foreground`, `border-border`).

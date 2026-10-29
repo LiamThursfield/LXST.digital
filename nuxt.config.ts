@@ -5,7 +5,14 @@ export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: { enabled: true },
     srcDir: 'app',
-    modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', '@nuxt/image', 'shadcn-nuxt'],
+    modules: [
+        '@nuxt/eslint',
+        '@nuxt/fonts',
+        '@nuxt/icon',
+        '@nuxt/image',
+        '@nuxtjs/color-mode',
+        'shadcn-nuxt'
+    ],
 
     vite: {
         plugins: [tailwindcss()]
@@ -15,7 +22,22 @@ export default defineNuxtConfig({
         preset: 'cloudflare-pages'
     },
 
-    css: ['./app/assets/css/tailwind.css', './app/assets/css/main.css'],
+    css: ['./app/assets/css/tailwind.css'],
+
+    colorMode: {
+        // Follow the OS by default; dark is the brand default when it can't be detected
+        preference: 'system',
+        fallback: 'dark',
+        // Toggle `.dark` on <html>, matching the `dark` variant in tailwind.css
+        classSuffix: ''
+    },
+
+    fonts: {
+        families: [
+            { name: 'Space Grotesk', provider: 'google', weights: [400, 500, 700] },
+            { name: 'JetBrains Mono', provider: 'google', weights: [400, 500] }
+        ]
+    },
 
     icon: {
         mode: 'css',
@@ -38,9 +60,6 @@ export default defineNuxtConfig({
         head: {
             htmlAttrs: {
                 lang: 'en'
-            },
-            bodyAttrs: {
-                class: 'dark'
             },
             title: 'LXST.digital | Digital Product Agency',
             meta: [

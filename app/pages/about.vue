@@ -1,66 +1,100 @@
 <script lang="ts" setup>
-import PageHeader from '~/components/project/headers/PageHeader.vue';
+import CtaBand from '~/components/project/marketing/CtaBand.vue';
+import MediaFrame from '~/components/project/utilities/MediaFrame.vue';
+import MonoLabel from '~/components/project/utilities/MonoLabel.vue';
+import PageHero from '~/components/project/headers/PageHero.vue';
+import SiteSection from '~/components/project/utilities/SiteSection.vue';
+import StepGrid from '~/components/project/marketing/StepGrid.vue';
+import type { Step } from '~/components/project/marketing/StepGrid.vue';
+import TagList from '~/components/project/utilities/TagList.vue';
 
 useSeoMeta({
     title: 'About | LXST.digital',
-    description: 'We are a boutique digital product agency blending design and engineering.'
+    description: 'A small studio closing the gap between good design and properly built software.'
 });
+
+const principles: Array<Step> = [
+    {
+        label: '01',
+        title: 'conversation first',
+        text: 'The best products start with a real conversation, not a form and a quote.'
+    },
+    {
+        label: '02',
+        title: 'code-first',
+        text: 'Real code, not builders, for speed, scale and complete freedom over how it looks.'
+    },
+    {
+        label: '03',
+        title: 'quality over quantity',
+        text: 'A select number of clients, so every project gets the attention it deserves.'
+    },
+    {
+        label: '04',
+        title: 'plain english',
+        text: "You'll always know what's being built and why, without the jargon."
+    }
+];
+
+const toolbox = ['laravel', 'nuxt', 'vue', 'react native', 'tailwind', 'aws', 'cloudflare'];
 </script>
 
 <template>
     <div>
-        <PageHeader
-            title="What We're About"
-            subtitle="THE AGENCY"
-            description="A showcase of our recent projects, from bespoke websites to complex web applications."
-        />
+        <PageHero label="~/about" size="statement">
+            a small studio closing the gap between good design and
+            <span class="text-highlight">properly built</span> software.
+        </PageHero>
 
-        <ProjectUtilitiesPageSection>
-            <div
-                class="prose prose-lg dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight text-muted-foreground"
-            >
-                <p class="text-xl text-foreground font-medium leading-relaxed mb-8">
-                    LXST.digital is a boutique digital product agency focused on bridging the gap
-                    between design and superior engineering.
-                </p>
+        <SiteSection aria-label="Our approach" split>
+            <p class="text-[clamp(1.25rem,1.9vw,1.625rem)] leading-[1.45] text-pretty">
+                Great software comes from understanding what people actually need, then backing it
+                with solid, scalable code. Templates and drag-and-drop builders can't give you that,
+                so we build on real frameworks and engineer every part properly.
+            </p>
+            <p class="text-muted-foreground text-pretty">
+                We use AI where it genuinely helps, like any good tool, but nothing ships that a
+                developer hasn't designed, reviewed and understood. That gives us, and you, the
+                freedom to build exactly what was imagined, running fast enough that people stick
+                around. It also means we only work with a handful of clients at a time. We're not a
+                factory turning out websites; we'd rather be a partner you keep coming back to.
+            </p>
+        </SiteSection>
 
-                <p>
-                    We believe that great software is born from a deep understanding of the user's
-                    needs, backed by solid, scalable code. In an era of generic templates and
-                    drag-and-drop builders, we stand apart by committing to "Code-First"
-                    development.
-                </p>
-                <p>
-                    This approach gives us—and you—unlimited freedom to create experiences that are
-                    exactly as envisioned, performing at speeds that keep users engaged.
-                </p>
-
-                <h3 class="text-foreground mt-12 mb-4">Quality Over Quantity</h3>
-                <p>
-                    We partner with a select number of clients to ensure every project receives the
-                    attention it deserves. We are not a factory churning out websites; we are
-                    partners in your digital growth.
-                </p>
-            </div>
-        </ProjectUtilitiesPageSection>
-
-        <section
-            class="py-32 px-4 bg-primary text-primary-foreground text-center relative overflow-hidden"
-        >
-            <div class="absolute inset-0 bg-black/30"></div>
-            <div class="container mx-auto max-w-2xl relative z-10">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    Ready to scale your digital presence?
-                </h2>
-                <p class="text-xl mb-10 opacity-90">
-                    Let's discuss how we can help you achieve your goals.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button as-child class="h-14 px-8 text-lg" size="lg" variant="secondary">
-                        <NuxtLink to="/contact">Let's Chat</NuxtLink>
-                    </Button>
+        <SiteSection aria-labelledby="who-title">
+            <div class="flex flex-wrap items-start gap-x-20 gap-y-10">
+                <!-- TODO: replace with a photo of Liam, ideally at work rather than a headshot -->
+                <MediaFrame
+                    class="aspect-4/5 max-w-[28.75rem] flex-[1_1_20rem]"
+                    label="[photo: liam, ideally at work, not a headshot]"
+                />
+                <div class="flex flex-[1_1_22.5rem] flex-col gap-5">
+                    <MonoLabel>who you'll be talking to</MonoLabel>
+                    <h2
+                        id="who-title"
+                        class="text-[clamp(2.25rem,4.4vw,3.75rem)] leading-none font-bold tracking-[-0.035em]"
+                    >
+                        liam
+                    </h2>
+                    <MonoLabel tone="highlight">laravel &amp; react native developer</MonoLabel>
+                    <p class="max-w-[34em] text-foreground-soft">
+                        You'll deal with the person writing the code from the first call to launch.
+                        No account managers, no hand-offs.
+                    </p>
                 </div>
             </div>
-        </section>
+        </SiteSection>
+
+        <SiteSection aria-labelledby="principles-title">
+            <h2 id="principles-title" class="mb-10 text-heading font-bold">how we work</h2>
+            <StepGrid :items="principles" />
+        </SiteSection>
+
+        <SiteSection aria-labelledby="tools-title" class="[--split-min:18.75rem]" split>
+            <h2 id="tools-title" class="text-subheading font-bold">the toolbox</h2>
+            <TagList :items="toolbox" />
+        </SiteSection>
+
+        <CtaBand :cta="{ label: 'start a project →', href: '/contact' }" heading="say hello." />
     </div>
 </template>
