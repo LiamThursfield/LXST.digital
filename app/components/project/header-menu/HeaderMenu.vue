@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import TextLogo from '~/components/project/logos/TextLogo.vue';
 import HamburgerButton from '~/components/lxst/buttons/HamburgerButton.vue';
+import ThemeToggle from '~/components/project/theme/ThemeToggle.vue';
 import type { LinkWithLabel } from '~/components/project/types';
 
 defineProps<{
@@ -46,27 +47,31 @@ const toggleMobileMenu = () => {
                         </li>
                     </ul>
 
-                    <Button
-                        v-if="cta != null"
-                        as-child
-                        class="hidden lg:inline-flex duration-300 ease-out"
-                        size="lg"
-                        variant="outline-primary"
-                        @click="toggleMobileMenu"
-                    >
-                        <NuxtLink
-                            class="font-semibold py-5 transition-colors duration-300 ease-out !text-base"
-                            :href="cta.href"
-                        >
-                            {{ cta.label }}
-                        </NuxtLink>
-                    </Button>
+                    <div class="flex flex-row items-center gap-2">
+                        <ThemeToggle />
 
-                    <HamburgerButton
-                        :is-active="isMobileMenuOpen"
-                        class="block cursor-pointer group pl-4 py-4 lg:hidden"
-                        @click="toggleMobileMenu"
-                    />
+                        <Button
+                            v-if="cta != null"
+                            as-child
+                            class="hidden lg:inline-flex duration-300 ease-out"
+                            size="lg"
+                            variant="outline-primary"
+                            @click="toggleMobileMenu"
+                        >
+                            <NuxtLink
+                                class="font-semibold py-5 transition-colors duration-300 ease-out !text-base"
+                                :href="cta.href"
+                            >
+                                {{ cta.label }}
+                            </NuxtLink>
+                        </Button>
+
+                        <HamburgerButton
+                            :is-active="isMobileMenuOpen"
+                            class="block cursor-pointer group pl-2 py-4 lg:hidden"
+                            @click="toggleMobileMenu"
+                        />
+                    </div>
                 </div>
             </div>
         </nav>
