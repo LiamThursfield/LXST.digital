@@ -93,6 +93,8 @@
 
     /* Darkens or lightens whatever is underneath, e.g. image hover */
     --overlay: rgb(0 0 0 / 0.08);
+    /* Decorative text that should barely show, e.g. the giant footer wordmark */
+    --ghost: var(--palette-ink-100);
 }
 
 /* 2. Semantic: dark */
@@ -132,6 +134,7 @@
     --ring: var(--palette-green-400);
 
     --overlay: rgb(255 255 255 / 0.05);
+    --ghost: var(--palette-ink-800);
 }
 
 /* 3. Tailwind theme */
@@ -163,6 +166,7 @@
     --color-input: var(--input);
     --color-ring: var(--ring);
     --color-overlay: var(--overlay);
+    --color-ghost: var(--ghost);
 }
 
 /* Shape, type and layout: mode-independent */
@@ -186,6 +190,9 @@
     --text-headline: clamp(2.5rem, 6vw, 5.5rem);
     --text-headline--line-height: 0.95;
     --text-headline--letter-spacing: -0.045em;
+    --text-statement: clamp(2.5rem, 6.2vw, 5.75rem);
+    --text-statement--line-height: 1;
+    --text-statement--letter-spacing: -0.04em;
     --text-title: clamp(2rem, 3.6vw, 3rem);
     --text-title--line-height: 1;
     --text-title--letter-spacing: -0.03em;
@@ -196,10 +203,35 @@
     --spacing: 0.25rem;
     --spacing-gutter: clamp(1.25rem, 5vw, 4rem);
     --spacing-section: clamp(3rem, 6vw, 5rem);
+    --spacing-hero: clamp(3.5rem, 8vw, 7rem);
+    --spacing-band: clamp(3.5rem, 8vw, 7rem);
     --spacing-content-container: 72rem;
     --container-page: 80rem;
 
     --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* The terminal cursor in the wordmark and home hero */
+    --animate-blink: blink 1.1s steps(1) infinite;
+
+    @keyframes blink {
+        0%,
+        49% {
+            opacity: 1;
+        }
+        50%,
+        100% {
+            opacity: 0;
+        }
+    }
+}
+
+/*
+ * Two (or more) columns that stack once each would drop below `--split-min`.
+ * Override per use with e.g. `[--split-min:23.75rem]`.
+ */
+@utility grid-split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--split-min, 21.25rem), 100%), 1fr));
 }
 
 @layer base {
@@ -213,7 +245,8 @@
         color-scheme: dark;
     }
     body {
-        @apply bg-background text-foreground font-sans;
+        @apply bg-background text-foreground font-sans text-lg;
+        line-height: 1.55;
     }
 
     a,

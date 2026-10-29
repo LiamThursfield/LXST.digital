@@ -22,7 +22,7 @@ export default defineNuxtConfig({
         preset: 'cloudflare-pages'
     },
 
-    css: ['./app/assets/css/tailwind.css', './app/assets/css/main.css'],
+    css: ['./app/assets/css/tailwind.css'],
 
     colorMode: {
         // Follow the OS by default; dark is the brand default when it can't be detected
