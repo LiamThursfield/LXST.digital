@@ -24,6 +24,7 @@
     --palette-ink-950: #0e0e0c;
     --palette-ink-900: #121210;
     --palette-ink-850: #171715;
+    --palette-ink-820: #1b1b19;
     --palette-ink-800: #1f1f1c;
     --palette-ink-700: #2a2a26;
     --palette-ink-600: #3a3a35;
@@ -34,6 +35,7 @@
     --palette-ink-300: #a9a69c;
     --palette-ink-250: #c9c7bf;
     --palette-ink-200: #d9d6cc;
+    --palette-ink-150: #e6e4dc;
     --palette-ink-100: #edebe4;
     --palette-ink-50: #f7f6f1;
 
@@ -47,8 +49,13 @@
     --palette-red-400: #ff6369;
 }
 
-/* 2. Semantic: light */
-:root {
+/*
+ * 2. Semantic: light
+ * `.invert-theme` flips a region to the opposite mode (e.g. the contact page),
+ * so its components keep using the same tokens.
+ */
+:root,
+.dark .invert-theme {
     --background: var(--palette-ink-50);
     --foreground: var(--palette-ink-900);
     /* Body copy that sits one step back from headings */
@@ -95,10 +102,13 @@
     --overlay: rgb(0 0 0 / 0.08);
     /* Decorative text that should barely show, e.g. the giant footer wordmark */
     --ghost: var(--palette-ink-100);
+    /* Second colour of the striped image placeholder (the first is `card`) */
+    --stripe: var(--palette-ink-150);
 }
 
 /* 2. Semantic: dark */
-.dark {
+.dark,
+:root:not(.dark) .invert-theme {
     --background: var(--palette-ink-950);
     --foreground: var(--palette-ink-100);
     --foreground-soft: var(--palette-ink-250);
@@ -135,6 +145,7 @@
 
     --overlay: rgb(255 255 255 / 0.05);
     --ghost: var(--palette-ink-800);
+    --stripe: var(--palette-ink-820);
 }
 
 /* 3. Tailwind theme */
@@ -167,6 +178,7 @@
     --color-ring: var(--ring);
     --color-overlay: var(--overlay);
     --color-ghost: var(--ghost);
+    --color-stripe: var(--stripe);
 }
 
 /* Shape, type and layout: mode-independent */
@@ -193,9 +205,18 @@
     --text-statement: clamp(2.5rem, 6.2vw, 5.75rem);
     --text-statement--line-height: 1;
     --text-statement--letter-spacing: -0.04em;
+    --text-heading: clamp(2rem, 4vw, 3.25rem);
+    --text-heading--line-height: 1;
+    --text-heading--letter-spacing: -0.03em;
     --text-title: clamp(2rem, 3.6vw, 3rem);
     --text-title--line-height: 1;
     --text-title--letter-spacing: -0.03em;
+    --text-subheading: clamp(1.75rem, 3vw, 2.5rem);
+    --text-subheading--line-height: 1;
+    --text-subheading--letter-spacing: -0.03em;
+    --text-item: clamp(1.5rem, 2.6vw, 2.125rem);
+    --text-item--line-height: 1.15;
+    --text-item--letter-spacing: -0.02em;
     --text-lead: clamp(1.1875rem, 1.6vw, 1.375rem);
     --text-lead--line-height: 1.55;
 
@@ -205,7 +226,6 @@
     --spacing-section: clamp(3rem, 6vw, 5rem);
     --spacing-hero: clamp(3.5rem, 8vw, 7rem);
     --spacing-band: clamp(3.5rem, 8vw, 7rem);
-    --spacing-content-container: 72rem;
     --container-page: 80rem;
 
     --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
@@ -241,8 +261,12 @@
     html {
         color-scheme: light;
     }
-    html.dark {
+    html.dark,
+    html:not(.dark) .invert-theme {
         color-scheme: dark;
+    }
+    .dark .invert-theme {
+        color-scheme: light;
     }
     body {
         @apply bg-background text-foreground font-sans text-lg;

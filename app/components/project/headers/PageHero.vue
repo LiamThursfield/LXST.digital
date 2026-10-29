@@ -11,10 +11,13 @@ withDefaults(
          * `statement`: a sentence-long title (about).
          */
         size?: 'display' | 'statement';
+        /** Less space above, for when something (e.g. a back link) already sits on top */
+        compact?: boolean;
     }>(),
     {
         label: undefined,
-        size: 'display'
+        size: 'display',
+        compact: false
     }
 );
 
@@ -26,9 +29,12 @@ const slots = defineSlots<{
 
 <template>
     <Container
-        :class="{ 'grid-split [--split-min:23.75rem] items-end gap-x-20 gap-y-8': slots.lead }"
+        :class="[
+            compact ? 'pt-6' : 'pt-hero',
+            { 'grid-split [--split-min:23.75rem] items-end gap-x-20 gap-y-8': slots.lead }
+        ]"
         as="section"
-        class="pt-hero pb-section"
+        class="pb-section"
     >
         <div>
             <MonoLabel v-if="label">{{ label }}</MonoLabel>
