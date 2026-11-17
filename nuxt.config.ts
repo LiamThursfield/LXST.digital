@@ -24,6 +24,13 @@ export default defineNuxtConfig({
 
     css: ['./app/assets/css/tailwind.css'],
 
+    runtimeConfig: {
+        public: {
+            // LXST.admin's tenant API; override with NUXT_PUBLIC_LXST_API_BASE
+            lxstApiBase: 'https://lxst.lxst.digital/api/v1'
+        }
+    },
+
     colorMode: {
         // Follow the OS by default; dark is the brand default when it can't be detected
         preference: 'system',
