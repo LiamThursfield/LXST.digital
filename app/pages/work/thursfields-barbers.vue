@@ -16,9 +16,9 @@ useSeoMeta({
 
 // TODO: Every bracketed value below is a placeholder from the design and needs real content before launch
 const facts = [
-    { term: 'client', value: 'Thursfields Barbers, [TOWN]' },
+    { term: 'client', value: 'Thursfields Barbers, Stoke-on-Trent' },
     { term: 'what we did', value: 'design, build, custom CMS' },
-    { term: 'launched', value: '[MONTH YEAR]' }
+    { term: 'launched', value: '2025' }
 ];
 
 const brief =
@@ -33,12 +33,12 @@ const built: Array<LabelledRow> = [
     {
         label: '02',
         title: 'a custom CMS',
-        text: 'The team updates [PRICES / BARBERS / GALLERY] themselves, in a few clicks.'
+        text: 'The team updates prices, opening times and the gallery themselves, in a few clicks.'
     },
     {
         label: '03',
         title: 'booking, front and centre',
-        text: 'Connected to [BOOKING PROVIDER] so every page leads to an appointment.'
+        text: 'Connected to Booksy so every page leads to an appointment.'
     },
     {
         label: '04',
@@ -50,8 +50,8 @@ const built: Array<LabelledRow> = [
 const stack = [
     { term: 'frontend', value: '[e.g. nuxt · tailwind]' },
     { term: 'cms', value: '[e.g. laravel admin]' },
-    { term: 'hosting', value: '[e.g. cloudflare]' },
-    { term: 'integrations', value: '[BOOKING PROVIDER]' }
+    { term: 'hosting', value: 'vercel' },
+    { term: 'integrations', value: 'booksy' }
 ];
 
 const quote = {
@@ -129,11 +129,6 @@ const quote = {
             <LabelledRows :items="built" />
         </Container>
 
-        <Container class="grid-split gap-6 pt-[clamp(3.5rem,7vw,6rem)] [--split-min:18.75rem]">
-            <MediaFrame class="aspect-4/5" label="[screenshot: mobile, booking flow]" />
-            <MediaFrame class="aspect-4/5" label="[screenshot: the CMS editing screen]" />
-        </Container>
-
         <Container
             aria-labelledby="stack-title"
             as="section"
@@ -154,6 +149,8 @@ const quote = {
             </figure>
         </Container>
 
+        <!-- Disabled until we have multiple case studies -->
+        <!--
         <section aria-label="Next project" class="border-t border-border">
             <Container>
                 <NuxtLink
@@ -169,6 +166,7 @@ const quote = {
                 </NuxtLink>
             </Container>
         </section>
+        -->
 
         <CtaBand
             :cta="{ label: 'start a project →', href: '/contact' }"

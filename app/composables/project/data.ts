@@ -92,7 +92,7 @@ export function useData() {
             type: 'bespoke website',
             blurb: 'A premium brand experience for a modern barbershop, with a custom CMS so the team can manage content without a developer.',
             summary:
-                'A premium brand experience for a modern barbershop, with a custom CMS so the team can update prices, staff and photos themselves.',
+                'A premium brand experience for a modern barbershop, with a custom CMS so the team can update prices, opening times and photos themselves.',
             image: '/images/projects/thursfields-barbers-thumbnail.png',
             href: '/work/thursfields-barbers',
             cta: 'read the case study →',
