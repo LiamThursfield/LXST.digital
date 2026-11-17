@@ -4,15 +4,38 @@ import Container from '~/components/project/utilities/Container.vue';
 import CtaBand from '~/components/project/marketing/CtaBand.vue';
 import PageHero from '~/components/project/headers/PageHero.vue';
 import ProjectRow from '~/components/project/marketing/ProjectRow.vue';
-import { useData } from '~/composables/project/data';
+import { toCta, usePageContent, useProjects } from '~/composables/project/cms';
+import type { CtaBandView } from '~/composables/project/cms';
+import type { WorkTemplate } from '~/lib/lxst-api/content';
 
-useSeoMeta({
-    title: 'Work | LXST.digital',
-    description:
-        'Recent projects, from bespoke websites for barbers and DJs to web applications for artists.'
-});
+type WorkContent = { heroTitle: string; heroLead: string; cta: CtaBandView };
 
-const { projects } = useData();
+// Shown until the work page is published in LXST.admin
+const fallback: WorkContent = {
+    heroTitle: 'the work',
+    heroLead:
+        "A few recent projects, from a barbershop's new home online to a tool DJs use to make their tags.",
+    cta: { heading: 'yours could be next.', cta: { label: 'start a project →', href: '/contact' } }
+};
+
+const content = await usePageContent<WorkTemplate, WorkContent>(
+    '/work',
+    (cms) => ({
+        heroTitle: cms.hero_title,
+        heroLead: cms.hero_lead,
+        cta: toCta(cms.cta, fallback.cta)
+    }),
+    {
+        content: fallback,
+        seo: {
+            title: 'Work | LXST.digital',
+            description:
+                'Recent projects, from bespoke websites for barbers and DJs to web applications for artists.'
+        }
+    }
+);
+
+const projects = await useProjects();
 
 const filters = [
     { value: 'all', label: 'everything' },
@@ -22,7 +45,7 @@ const filters = [
 const filter = ref('all');
 
 const shown = computed(() =>
-    projects.filter((project) => filter.value === 'all' || project.kind === filter.value)
+    projects.value.filter((project) => filter.value === 'all' || project.kind === filter.value)
 );
 
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -31,11 +54,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
 <template>
     <div>
         <PageHero label="~/work">
-            the work
-            <template #lead>
-                A few recent projects, from a barbershop's new home online to a tool DJs use to make
-                their tags.
-            </template>
+            {{ content.heroTitle }}
+            <template #lead>{{ content.heroLead }}</template>
         </PageHero>
 
         <Container class="pb-[clamp(3.5rem,7vw,6rem)]">
@@ -57,9 +77,6 @@ const pad = (n: number) => String(n).padStart(2, '0');
             </section>
         </Container>
 
-        <CtaBand
-            :cta="{ label: 'start a project →', href: '/contact' }"
-            heading="yours could be next."
-        />
+        <CtaBand :cta="content.cta.cta" :heading="content.cta.heading" />
     </div>
 </template>

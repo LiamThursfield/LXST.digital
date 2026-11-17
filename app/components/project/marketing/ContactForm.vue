@@ -8,8 +8,10 @@ import { useCrmForm } from '~/composables/project/lxst-api';
 import { useNavigation } from '~/composables/project/navigation';
 import type { FormField } from '~/lib/lxst-api/types';
 
-// The fields, labels and choices all come from the `contact` CRM form in LXST.admin
-const { form, submit } = useCrmForm('contact');
+// The fields, labels and choices all come from a CRM form in LXST.admin
+const props = withDefaults(defineProps<{ slug?: string }>(), { slug: 'contact' });
+
+const { form, submit } = useCrmForm(props.slug);
 const { email } = useNavigation();
 
 // The CRM form has no placeholder setting, so the few we want live here, by field key
