@@ -24,6 +24,19 @@ export default defineNuxtConfig({
 
     css: ['./app/assets/css/tailwind.css'],
 
+    $production: {
+        // Serve rendered pages from cache and refresh them in the background, so CMS changes show
+        // within a minute without every visit calling LXST.admin (its API is rate limited per IP)
+        routeRules: { '/**': { swr: 60 } }
+    },
+
+    runtimeConfig: {
+        public: {
+            // LXST.admin's tenant API; override with NUXT_PUBLIC_LXST_API_BASE
+            lxstApiBase: 'https://lxst.lxst.digital/api/v1'
+        }
+    },
+
     colorMode: {
         // Follow the OS by default; dark is the brand default when it can't be detected
         preference: 'system',
