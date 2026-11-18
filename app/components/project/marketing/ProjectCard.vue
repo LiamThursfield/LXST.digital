@@ -1,78 +1,61 @@
-<script lang="ts" setup>
-interface Project {
-    title: string;
-    type: string;
-    description: string;
-    image?: string;
-    link?: string;
-}
+<script setup lang="ts">
+import MediaFrame from '~/components/project/utilities/MediaFrame.vue';
+import type { Project } from '~/composables/project/data';
 
-interface Props {
-    project: Project;
-}
+const props = withDefaults(
+    defineProps<{
+        project: Project;
+        /**
+         * `feature`: wide image with text alongside (home page lead project).
+         * `tile`: image above text, for a grid.
+         */
+        variant?: 'feature' | 'tile';
+    }>(),
+    {
+        variant: 'tile'
+    }
+);
 
-const props = defineProps<Props>();
-
-const hasLink = computed(() => !!props.project.link);
+const eyebrow = computed(() =>
+    [props.project.type, props.project.year].filter(Boolean).join(' · ')
+);
 </script>
 
 <template>
     <NuxtLink
-        :to="hasLink ? project.link : '#'"
-        :target="hasLink ? '_blank' : '_self'"
-        :rel="hasLink ? 'noopener noreferrer' : ''"
-        class="group relative overflow-hidden rounded border border-border bg-card h-full flex flex-col"
-        :class="{ 'cursor-default': !hasLink }"
+        :class="
+            variant === 'feature'
+                ? 'flex flex-wrap items-end gap-x-12 gap-y-6'
+                : 'flex flex-col gap-3.5'
+        "
+        :target="project.external ? '_blank' : undefined"
+        :to="project.href"
+        class="group"
     >
-        <!-- Image Container -->
-        <div class="aspect-video w-full bg-muted overflow-hidden relative">
-            <NuxtImg
-                v-if="project.image"
-                :src="project.image"
-                :alt="project.title"
-                class="w-full h-full object-cover transition-transform duration-300 group-active:scale-105 group-hover:scale-105"
-            />
-            <div
-                v-else
-                class="w-full h-full flex items-center justify-center bg-muted text-muted-foreground"
+        <MediaFrame
+            :alt="`${project.name} screenshot`"
+            :class="variant === 'feature' ? 'aspect-16/10 min-w-0 flex-[2_1_35rem]' : 'aspect-4/3'"
+            :src="project.image"
+        />
+
+        <div
+            :class="{ 'flex-[1_1_18.75rem] pb-2': variant === 'feature' }"
+            class="flex flex-col gap-3"
+        >
+            <span class="font-mono text-[0.8125rem] text-highlight">{{ eyebrow }}</span>
+            <span
+                :class="variant === 'feature' ? 'text-[clamp(1.875rem,3.4vw,2.75rem)]' : 'text-3xl'"
+                class="font-bold leading-[1.05] tracking-[-0.03em]"
             >
-                <span class="text-sm font-medium uppercase tracking-wider">Coming Soon</span>
-            </div>
-
-            <!-- Overlay -->
-            <div
-                class="absolute inset-0 bg-black/0 group-active:bg-black/10 group-hover:bg-black/10 transition-colors duration-300 dark:group-active:bg-white/5 dark:group-hover:bg-white/5"
-            />
-        </div>
-
-        <!-- Content -->
-        <div class="p-6 flex flex-col flex-grow">
-            <div class="mb-3 flex items-center justify-between">
-                <span class="text-xs font-semibold uppercase tracking-wider text-primary">
-                    {{ project.type }}
-                </span>
-            </div>
-
-            <h3
-                class="text-2xl font-bold mb-3 text-foreground group-active:text-primary group-hover:text-primary transition-colors"
+                {{ project.name }}<template v-if="project.external"> ↗</template>
+            </span>
+            <span class="text-[1.0625rem] text-muted-foreground">{{ project.summary }}</span>
+            <span
+                v-if="variant === 'feature'"
+                class="mt-2 text-base underline decoration-highlight underline-offset-6"
             >
-                {{ project.title }}
-            </h3>
-
-            <p class="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
-                {{ project.description }}
-            </p>
-
-            <div
-                v-if="project.link"
-                class="flex items-center text-sm font-medium text-foreground group-active:text-primary group-hover:text-primary transition-colors mt-auto"
-            >
-                View Project
-                <span
-                    class="ml-2 transform group-active:translate-x-1 group-hover:translate-x-1 transition-transform"
-                    >→</span
-                >
-            </div>
+                {{ project.cta }}
+            </span>
         </div>
     </NuxtLink>
 </template>

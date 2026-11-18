@@ -1,6 +1,7 @@
 // @ts-check
 import withNuxt from './.nuxt/eslint.config.mjs';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import tseslint from 'typescript-eslint';
 
 export default withNuxt(
     {
@@ -20,6 +21,15 @@ export default withNuxt(
             parserOptions: {
                 sourceType: 'module'
             }
+        }
+    },
+    {
+        // The core rule doesn't understand TypeScript, e.g. it flags parameter names in function types
+        files: ['app/**/*.ts', 'app/**/*.vue'],
+        plugins: { '@typescript-eslint': tseslint.plugin },
+        rules: {
+            'no-unused-vars': 'off',
+            '@typescript-eslint/no-unused-vars': 'error'
         }
     },
     eslintPluginPrettierRecommended

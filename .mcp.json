@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "lxst": {
+            "type": "http",
+            "url": "https://lxst.lxst.digital/api/mcp",
+            "headers": {
+                "Authorization": "Bearer ${LXST_DIGITAL_MCP_TOKEN}"
+            }
+        }
+    }
+}

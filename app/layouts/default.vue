@@ -1,48 +1,23 @@
 <script lang="ts" setup>
-import type { LinkWithLabel } from '~/components/project/types';
+import SiteFooter from '~/components/project/footer/SiteFooter.vue';
+import SiteHeader from '~/components/project/header-menu/SiteHeader.vue';
+import { useNavigation } from '~/composables/project/navigation';
+import { useCmsPage, useSiteLayout } from '~/composables/project/cms';
 
-let links: Array<LinkWithLabel> = [
-    {
-        label: 'Home',
-        href: '/'
-    },
-    {
-        label: 'Services',
-        href: '/services'
-    },
-    {
-        label: 'Work',
-        href: '/work'
-    },
-    {
-        label: 'About',
-        href: '/about'
-    },
-    {
-        label: 'Contact',
-        href: '/contact'
-    }
-];
+const { mainLinks, primaryCta, sitemapLinks, elsewhereLinks } = useNavigation();
 
-let socialLinks: Array<LinkWithLabel> = [
-    {
-        label: 'Instagram',
-        href: 'https://instagram.co/lxst.digital'
-    }
-    // {
-    //     label: 'Facebook',
-    //     href: '/facebook'
-    // },
-    // {
-    //     label: 'Twitter/X',
-    //     href: '/twitter'
-    // }
-];
-
-let primaryCta = {
-    label: "Let's Chat",
-    href: '/contact'
-};
+// The Site layout's content comes with the current page (the page fetches it too, sharing the
+// request). Pages keep it up to date as you navigate.
+const siteLayout = useSiteLayout();
+const { data: currentPage } = await useCmsPage(useRoute().path);
+if (currentPage.value?.type === 'page') {
+    siteLayout.value = currentPage.value.layout.content;
+}
+const footerBlurb = computed(
+    () =>
+        siteLayout.value?.footer_blurb ||
+        'Every project starts with a conversation. We pair that with careful engineering to build anything from a five-page site to a full platform.'
+);
 
 onMounted(() => {
     // Adding an empty listener to the body enables :active styles in iOS Safari
@@ -54,15 +29,17 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col relative">
-        <div class="relative">
-            <ProjectHeaderMenu :links="links" :cta="primaryCta" />
+    <div class="min-h-screen flex flex-col">
+        <SiteHeader :cta="primaryCta" :links="mainLinks" />
 
+        <main class="flex-1">
             <slot />
+        </main>
 
-            <ProjectFooter :site-map-links="links" :social-links="socialLinks" />
-        </div>
+        <SiteFooter
+            :blurb="footerBlurb"
+            :elsewhere-links="elsewhereLinks"
+            :sitemap-links="sitemapLinks"
+        />
     </div>
 </template>
-
-<style lang="postcss" scoped></style>

@@ -32,28 +32,37 @@ LXST.digital is a high-performance, SEO-friendly website template built with Nux
 
 ### 2. Tailwind CSS 4 (CSS-first)
 
-- We use the new `@theme` block in `app/assets/css/tailwind.css`.
-- Avoid `tailwind.config.js` unless absolutely necessary for external plugins.
-- We use the new `@theme` block in `app/assets/css/tailwind.css`.
-- Avoid `tailwind.config.js` unless absolutely necessary for external plugins.
+- All theming lives in `app/assets/css/tailwind.css`; there is no `tailwind.config.js`.
+- Tokens come in three layers: raw `--palette-*` values → semantic tokens (light in `:root`, dark in `.dark`) → `@theme` utilities. Re-skin by editing the palette; change rounding with `--radius`.
+- Light/dark is handled by `@nuxtjs/color-mode` (toggles `.dark` on `<html>`); `ThemeToggle` cycles system/light/dark.
+- Use `text-highlight` (not `text-primary`) for brand-green text and thin lines; `primary` is for solid fills and is too light to read as text in light mode.
+- Wrap a region in `.invert-theme` to render it in the opposite mode (the contact page does this); components inside need no changes.
+- Pages are assembled from `components/project/`: layout pieces (`Container`, `SiteSection`, `PageHero`, `SectionHeading`, `CtaBand`) and content pieces (`MetaList`, `RuledList`, `LabelledRows`, `StepGrid`, `FaqList`, `ProjectCard`, `ProjectRow`, `ChoiceChips`...). Shared content (services, projects) lives in `composables/project/data.ts`; navigation in `composables/project/navigation.ts`.
 - **CRITICAL**: Use CSS variables defined in the theme for consistent styling.
     - **DO NOT** use arbitrary or default Tailwind colors like `bg-red-500` or `text-blue-600`.
     - **ALWAYS** use theme tokens (e.g., `bg-primary`, `text-muted-foreground`, `border-border`).
     - Verify colors in `app/assets/css/tailwind.css` before implementing.
 
-### 3. shadcn-vue Integration
+### 3. Content from LXST.admin (headless CMS)
+
+- Content comes from the `lxst.lxst.digital` tenant's API (`runtimeConfig.public.lxstApiBase`). Its MCP server (`.mcp.json`, token in `LXST_DIGITAL_MCP_TOKEN`) manages templates, pages, menus and forms.
+- Each page calls `usePageContent(url, fromCms, fallback)` (`composables/project/cms.ts`): it renders the published CMS page's content, converted to component props, or the fallback written in the page until one is published. Services and projects live on the Services and Work pages (`useServices`, `useProjects`).
+- Template field slugs are typed in `lib/lxst-api/content.ts`; keep them in step with the templates in LXST.admin.
+- Header, footer and "elsewhere" links come from the `header`, `footer` and `elsewhere` menus; the contact form from the `contact` CRM form.
+
+### 4. shadcn-vue Integration
 
 - Foundational components are in `app/components/ui/`.
 - Use the shadcn command to proactively identify and add missing, useful components: `npx shadcn-vue@latest add <component>`.
 - Wrap shadcn components in domain-specific components when logic grows complex.
 
-### 4. SEO and Performance
+### 5. SEO and Performance
 
 - Use `useSeoMeta` in every page.
 - Use `<NuxtImg>` for all images to leverage Nuxt Image's optimization.
 - Ensure all interactive elements are accessible (Aria-labels, proper focus states).
 
-### 5. Responsiveness
+### 6. Responsiveness
 
 - Ensure all designs are fully responsive (mobile-first approach).
 - Test layouts across standard breakpoints to guarantee a seamless experience on all devices.
