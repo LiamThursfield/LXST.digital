@@ -130,11 +130,12 @@ const heroTitle = computed(() => {
 
         <SiteSection aria-labelledby="who-title">
             <div class="flex flex-wrap items-start gap-x-20 gap-y-10">
+                <!-- Only shown once a photo is set on the About page in LXST.admin -->
                 <MediaFrame
-                    :alt="content.personPhoto?.alt ?? content.personName"
-                    :src="content.personPhoto?.url"
+                    v-if="content.personPhoto"
+                    :alt="content.personPhoto.alt ?? content.personName"
+                    :src="content.personPhoto.url"
                     class="aspect-4/5 max-w-[28.75rem] flex-[1_1_20rem]"
-                    label="[photo: liam, ideally at work, not a headshot]"
                 />
                 <div class="flex flex-[1_1_22.5rem] flex-col gap-5">
                     <MonoLabel>who you'll be talking to</MonoLabel>
