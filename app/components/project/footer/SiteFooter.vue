@@ -5,6 +5,7 @@ import Wordmark from '~/components/project/logos/Wordmark.vue';
 import type { LinkWithLabel } from '~/components/project/types';
 
 defineProps<{
+    blurb: string;
     sitemapLinks: Array<LinkWithLabel>;
     elsewhereLinks: Array<LinkWithLabel>;
 }>();
@@ -20,10 +21,7 @@ const isExternal = (href: string) => /^(https?:|mailto:)/.test(href);
         class="border-t border-border overflow-hidden [--wordmark-size:calc((min(100vw,var(--container-page))-2*var(--spacing-gutter))/5)]"
     >
         <Container class="grid-split [--split-min:13.75rem] gap-10 pt-16">
-            <p class="max-w-[26em] text-base text-muted-foreground">
-                Every project starts with a conversation. We pair that with careful engineering to
-                build anything from a five-page site to a full platform.
-            </p>
+            <p class="max-w-[26em] text-base text-muted-foreground">{{ blurb }}</p>
 
             <nav aria-labelledby="footer-sitemap" class="flex flex-col gap-1.5 text-base">
                 <MonoLabel id="footer-sitemap" class="mb-1.5" tone="subtle">sitemap</MonoLabel>

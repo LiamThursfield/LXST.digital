@@ -8,19 +8,24 @@ import type {
     ProjectRow,
     ServiceRow,
     ServicesTemplate,
+    SiteLayout,
     WorkTemplate
 } from '~/lib/lxst-api/content';
 import type { ApiResponse, CmsLink, CmsPage, CmsRedirect } from '~/lib/lxst-api/types';
 
 // The page (or redirect) LXST.admin has for a URL. Null when there's no published page, or the
 // API can't be reached, so the site falls back to the content in the code.
+// The Site layout's content (footer blurb etc.). It comes with every published page, so pages
+// share it here as they load; null until one has.
+export const useSiteLayout = () => useState<SiteLayout | null>('lxst-site-layout', () => null);
+
 export function useCmsPage<Content>(url: string) {
     const api = useLxstApi();
 
     return useAsyncData(
         `lxst-page-${url}`,
         () =>
-            api<ApiResponse<CmsPage<Content> | CmsRedirect>>('/cms/pages', {
+            api<ApiResponse<CmsPage<Content, SiteLayout> | CmsRedirect>>('/cms/pages', {
                 query: { url, format: 'html' }
             })
                 .then((response) => response.data)
@@ -48,6 +53,7 @@ export async function usePageContent<Content, View>(
 ) {
     // Nuxt composables only work before the first await, so everything is set up first
     const nuxtApp = useNuxtApp();
+    const siteLayout = useSiteLayout();
     const request = useCmsPage<Content>(url);
     const { data } = request;
 
@@ -65,6 +71,10 @@ export async function usePageContent<Content, View>(
     });
 
     await request;
+
+    if (page.value) {
+        siteLayout.value = page.value.layout.content;
+    }
 
     if (data.value?.type === 'redirect') {
         const { to, status } = data.value.redirect;
