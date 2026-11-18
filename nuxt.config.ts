@@ -33,8 +33,16 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             // LXST.admin's tenant API; override with NUXT_PUBLIC_LXST_API_BASE
-            lxstApiBase: 'https://lxst.lxst.digital/api/v1'
+            lxstApiBase: 'https://lxst.lxst.digital/api/v1',
+            // Send each visit to LXST.admin's page view stats (plugins/page-views.client.ts);
+            // override with NUXT_PUBLIC_LXST_RECORD_PAGE_VIEWS
+            lxstRecordPageViews: true
         }
+    },
+
+    $development: {
+        // Dev calls the live API by default, so local browsing would add to the real stats
+        runtimeConfig: { public: { lxstRecordPageViews: false } }
     },
 
     colorMode: {
