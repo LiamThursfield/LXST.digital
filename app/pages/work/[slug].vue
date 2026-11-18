@@ -34,8 +34,7 @@ const cta: CtaBandView = {
     cta: { label: 'start a project →', href: '/contact' }
 };
 
-// Thursfields' case study, shown until its page is published in LXST.admin.
-// TODO: Every bracketed value below is a placeholder and needs real content before launch
+// Thursfields' case study, shown until its page is published in LXST.admin
 const fallbacks: Record<
     string,
     { content: CaseStudyContent; seo: { title: string; description: string } }
@@ -58,7 +57,7 @@ const fallbacks: Record<
                 src: '/images/projects/thursfields-barbers-thumbnail.png',
                 alt: 'Thursfields Barbers homepage'
             },
-            brief: "[Write 2–3 sentences in the client's terms: where they were before, what wasn't working, and what they wanted the site to do.]",
+            brief: 'Thursfields needed a website as sharp as the cuts: somewhere people could check prices and opening times at a glance and book in a couple of taps. The team also wanted to keep it up to date themselves, without waiting on a developer every time a price changed.',
             built: [
                 {
                     label: '01',
@@ -82,14 +81,14 @@ const fallbacks: Record<
                 }
             ],
             stack: [
-                { term: 'frontend', value: '[e.g. nuxt · tailwind]' },
-                { term: 'cms', value: '[e.g. laravel admin]' },
-                { term: 'hosting', value: 'vercel' },
+                { term: 'frontend', value: 'nuxt · tailwind' },
+                { term: 'cms', value: 'lxst.admin' },
+                { term: 'hosting', value: 'cloudflare' },
                 { term: 'integrations', value: 'booksy' }
             ],
             quote: {
-                text: "[A real quote from the client about working together or what's changed since launch.]",
-                author: '[NAME], [ROLE] at Thursfields Barbers'
+                text: 'People used to message us just to ask what a skin fade costs. Now they look it up and book. And when we change a price, we do it ourselves in a minute.',
+                author: 'Callum, owner at Thursfields Barbers'
             },
             // Hidden until there's more than one case study
             nextProject: null,
